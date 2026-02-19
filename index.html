@@ -1,1 +1,481 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jung Kyu Heon | Data-Centric AI Researcher</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --card: rgba(15, 23, 42, 0.82);
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --accent: #22d3ee;
+      --border: rgba(148, 163, 184, 0.25);
+      --shadow: 0 12px 35px rgba(2, 8, 23, 0.35);
+      --max-width: 1120px;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 45%, #020617 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    .container {
+      width: min(var(--max-width), 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(2, 6, 23, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #f8fafc;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 5.5rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+      color: #f8fafc;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      padding: 0.65rem 1rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #001018;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      color: #cbd5e1;
+      background: rgba(30, 41, 59, 0.45);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+      color: #e2e8f0;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      padding: 1.3rem;
+    }
+
+    .panel h3 {
+      margin-bottom: 0.75rem;
+      color: #f1f5f9;
+    }
+
+    .section {
+      padding: 1.8rem 0;
+    }
+
+    .section h2 {
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      margin-bottom: 1rem;
+      color: #f8fafc;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 1.2rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .chip {
+      padding: 0.42rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      font-size: 0.86rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .research-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.05rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .research-card h3 {
+      color: #f8fafc;
+      font-size: 1.05rem;
+    }
+
+    .tag {
+      display: inline-block;
+      width: fit-content;
+      color: var(--primary);
+      font-size: 0.8rem;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+    }
+
+    .research-card ul,
+    .panel ul {
+      padding-left: 1.1rem;
+      color: #cbd5e1;
+    }
+
+    .research-card p,
+    .panel p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      padding: 1.8rem 0 2.2rem;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        gap: 0.7rem;
+      }
+
+      nav a {
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="logo">Jung Kyu Heon</div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#interests">Interests</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">Data-Centric AI Researcher</span>
+          <h1>Leveraging Foundation Models to Address Data Scarcity</h1>
+          <p>
+            안녕하세요. 저는 부경대학교 산업데이터공학과(TEAMLAB) 박사과정 정규헌입니다.
+            Foundation Models(LLM, Diffusion)를 활용해 저자원 환경의 질적 데이터 부족 문제를 해결하는
+            Data-Centric AI 연구를 수행하고 있습니다.
+          </p>
+          <p>
+            단순히 모델 규모를 키우는 대신, 데이터 품질 향상·제어 가능한 합성 데이터 생성·학습 목표 정렬·재현성 확보에 집중합니다.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://scholar.google.com/citations?user=gJSM26UAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a class="btn btn-secondary" href="https://github.com/kkyuhun94" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+        <aside class="panel">
+          <h3>Research Focus</h3>
+          <ul>
+            <li>Controllable Synthetic Data Generation</li>
+            <li>Few-shot Image Classification</li>
+            <li>Diffusion + LLM Augmentation Pipelines</li>
+            <li>Multilingual/Cultural AI & AI Safety</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="interests">
+      <div class="container">
+        <h2>🎯 Research Interests</h2>
+        <div class="chips">
+          <span class="chip">Synthetic Data</span>
+          <span class="chip">Data Augmentation</span>
+          <span class="chip">Few-shot Classification</span>
+          <span class="chip">Diffusion Models</span>
+          <span class="chip">Large Language Models</span>
+          <span class="chip">Data Distribution Control</span>
+          <span class="chip">Multilingual & Cultural AI</span>
+          <span class="chip">AI Safety & Dataset Construction</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="container">
+        <h2>🔬 Selected Research</h2>
+        <p class="section-intro">데이터 다양성과 충실도를 분리/제어하고, 다운스트림 학습 목적과 정렬되는 합성 데이터 전략을 설계합니다.</p>
+        <div class="card-grid">
+          <article class="research-card">
+            <span class="tag">ECCVW 2024 (Oral)</span>
+            <h3>DALDA</h3>
+            <p>Data Augmentation Leveraging Diffusion Model and LLM with Adaptive Guidance</p>
+            <ul>
+              <li>LLM context prompt + IP-Adapter reference guidance</li>
+              <li>CLIPScore 기반 adaptive guidance scaling</li>
+              <li>1-shot classification 평균 +9.07%p 향상</li>
+            </ul>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">Under Review</span>
+            <h3>CABIN</h3>
+            <p>Controlling Augmentations for Balancing Invariance and Diversification in One-Shot Classification</p>
+            <ul>
+              <li>Diversity-focused / Key feature-focused 2종 합성</li>
+              <li>Stage 1 representation → Stage 2 fidelity refinement</li>
+              <li>모델 선택 민감도 완화, 모듈형 프레임워크</li>
+            </ul>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">IEEE Access</span>
+            <h3>KoDi</h3>
+            <p>Korean Diffusion Model for Bilingual Text-to-Image & Cultural Fidelity</p>
+            <ul>
+              <li>Korean Cultural Dataset (KCD) 구축</li>
+              <li>한국어/로마자/영문 번역 프롬프트 전략</li>
+              <li>KC-CLIP, LVLM 기반 문화 충실도 평가</li>
+            </ul>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">ACL 2023 Findings</span>
+            <h3>Pseudo Outlier Exposure</h3>
+            <p>Out-of-Distribution Detection without External Data</p>
+            <ul>
+              <li>고어텐션 토큰 마스킹 + surrogate OOD 생성</li>
+              <li>외부 OOD 데이터 없이 경쟁력 있는 AUROC/F1</li>
+            </ul>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">Under Review</span>
+            <h3>Ko-ToxicWebQ</h3>
+            <p>Korean Toxic Web Query Dataset</p>
+            <ul>
+              <li>실제 한국어 검색 질의 47.7K</li>
+              <li>7개 toxicity + 3개 obfuscation 카테고리</li>
+              <li>한국어 독성 질의 탐지 벤치마크 제시</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <h2>🧪 Applied & Industrial Projects</h2>
+        <div class="two-col">
+          <article class="panel">
+            <h3>🔥 FireFusion (Patent)</h3>
+            <ul>
+              <li>Diffusion 기반 화재 이미지 합성 시스템</li>
+              <li>LoRA fine-tuning + ControlNet masking</li>
+              <li>BLIP captioning + GPT recaptioning</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>🌍 Patent Domain NMT</h3>
+            <ul>
+              <li>mBART 특허 도메인 번역 파인튜닝</li>
+              <li>Domain adaptation + back translation</li>
+              <li>BLEU/TER 개선</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>🏭 SYnet</h3>
+            <ul>
+              <li>조선소 정비 차량 수요 예측 4D CNN</li>
+              <li>시공간 특성 통합 모델링</li>
+              <li>산업공학 분야 실무 적용 및 게재</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>📈 Research Trajectory</h3>
+            <p>
+              DALDA(다양성 제어) → CABIN(학습 단계별 증강 정렬) → KoDi(문화 충실도 확장)
+              → Ko-ToxicWebQ(AI Safety/데이터 거버넌스)로 이어지는 Data-Centric AI 연구를 확장하고 있습니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="container">
+        <h2>📚 Publications</h2>
+        <div class="two-col">
+          <article class="panel">
+            <h3>Journal</h3>
+            <ul>
+              <li>KoDi – IEEE Access</li>
+              <li>SYnet – Industrial Engineering & Manufacturing Systems</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Conference</h3>
+            <ul>
+              <li>Pseudo Outlier Exposure – ACL 2023</li>
+              <li>DALDA – ECCVW 2024</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container panel">
+        <h2>📎 Contact</h2>
+        <p>Email: <a href="mailto:kkyuhun94@gmail.com">kkyuhun94@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/kkyuhun94" target="_blank" rel="noopener noreferrer">github.com/kkyuhun94</a></p>
+        <p>Google Scholar: <a href="https://scholar.google.com/citations?user=gJSM26UAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Scholar Profile</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Jung Kyu Heon · Data-Centric AI Research Portfolio
+    </div>
+  </footer>
+</body>
+</html>
