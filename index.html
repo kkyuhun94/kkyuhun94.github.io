@@ -1,1 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jung Kyu Heon | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --link: #2563eb;
+      --card: #ffffff;
+      --max: 1060px;
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", "Pretendard", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { width: min(92%, var(--max)); margin: 0 auto; }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 0;
+      font-size: 0.95rem;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-left a,
+    .nav-right a {
+      color: #111827;
+      font-weight: 500;
+    }
+
+    .nav-right .lang {
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+    }
+
+    main { padding: 2rem 0 3rem; }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .profile-card,
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+
+    .avatar {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      background: linear-gradient(145deg, #dbeafe, #e0e7ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #4b5563;
+      border: 1px solid #dbe3f2;
+    }
+
+    .name {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .role {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.92rem;
+    }
+
+    .contact-list span { color: var(--muted); font-weight: 500; }
+
+    h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.35rem);
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .lead { color: #374151; margin-bottom: 1rem; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .tag {
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 0.32rem 0.68rem;
+      font-size: 0.82rem;
+      color: #374151;
+    }
+
+    .section {
+      margin-bottom: 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.2rem;
+    }
+
+    .section h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.55rem;
+    }
+
+    .item-list { display: grid; gap: 0.85rem; }
+
+    .item {
+      border-left: 3px solid #dbeafe;
+      padding-left: 0.8rem;
+    }
+
+    .item h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+    .meta { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.3rem; }
+    .item p { color: #374151; font-size: 0.92rem; }
+
+    .links {
+      margin-top: 0.3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+    }
+
+    footer {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.86rem;
+      padding-top: 0.6rem;
+    }
+
+    @media (max-width: 900px) {
+      .intro { grid-template-columns: 1fr; }
+      .top-nav { flex-wrap: wrap; gap: 0.55rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container top-nav">
+      <nav class="nav-left">
+        <a href="#home">Home</a>
+        <a href="#research">Paper &amp; Project</a>
+      </nav>
+      <div class="nav-right">
+        <a href="https://scholar.google.com/citations?user=gJSM26UAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        <span class="lang">EN&nbsp;&nbsp;KO</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <div class="container">
+      <section class="intro">
+        <aside class="profile-card">
+          <div class="avatar">Profile Photo</div>
+          <div class="name">Jung Kyu Heon</div>
+          <div class="role">Data-Centric AI Researcher</div>
+          <div class="contact-list">
+            <div><span>Email:</span> <a href="mailto:kkyuhun94@gmail.com">kkyuhun94@gmail.com</a></div>
+            <div><span>GitHub:</span> <a href="https://github.com/kkyuhun94" target="_blank" rel="noopener noreferrer">kkyuhun94</a></div>
+            <div><span>Scholar:</span> <a href="https://scholar.google.com/citations?user=gJSM26UAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Profile</a></div>
+          </div>
+        </aside>
+
+        <article class="content-card">
+          <h1>Leveraging Foundation Models to Address Data Scarcity</h1>
+          <p class="lead">
+            부경대학교 산업데이터공학과(TEAMLAB) 박사과정으로, Foundation Models(LLM/Diffusion)를 활용해
+            저자원 시나리오에서의 데이터 부족 문제를 해결하는 Data-Centric AI 연구를 수행합니다.
+          </p>
+          <p class="lead">
+            모델 규모 확장보다 데이터 품질, 제어 가능한 합성 데이터 파이프라인, 학습 목표와 정렬된 증강 전략,
+            그리고 재현 가능한 연구 설계를 중심으로 접근합니다.
+          </p>
+          <div class="tags">
+            <span class="tag">Synthetic Data</span>
+            <span class="tag">Data Augmentation</span>
+            <span class="tag">Few-shot Learning</span>
+            <span class="tag">Diffusion + LLM</span>
+            <span class="tag">AI Safety</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="research">
+        <h2>Research (Google Scholar 기반 업데이트)</h2>
+        <div class="item-list">
+          <article class="item">
+            <h3>DALDA — Data Augmentation Leveraging Diffusion Model and LLM with Adaptive Guidance</h3>
+            <div class="meta">ECCVW 2024 (Oral)</div>
+            <p>LLM 프롬프트와 IP-Adapter를 결합하고, CLIPScore 기반 adaptive guidance로 다양성과 충실도를 동적으로 조절합니다.</p>
+            <div class="links">
+              <a href="https://scholar.google.com/scholar?q=Data+Augmentation+Leveraging+Diffusion+Model+and+LLM+with+Adaptive+Guidance" target="_blank" rel="noopener noreferrer">Scholar link</a>
+            </div>
+          </article>
+
+          <article class="item">
+            <h3>KoDi — A Korean Diffusion Model for Bilingual Text-to-Image Generation and Cultural Fidelity</h3>
+            <div class="meta">IEEE Access</div>
+            <p>KCD 구축 및 한국어/로마자/영문 프롬프트 전략, KC-CLIP·LVLM 기반 평가로 문화 충실도를 개선합니다.</p>
+            <div class="links">
+              <a href="https://scholar.google.com/scholar?q=A+Korean+Diffusion+Model+for+Bilingual+Text-to-Image+Generation+and+Cultural+Fidelity" target="_blank" rel="noopener noreferrer">Scholar link</a>
+            </div>
+          </article>
+
+          <article class="item">
+            <h3>Pseudo Outlier Exposure — Out-of-Distribution Detection without External Data</h3>
+            <div class="meta">ACL 2023 Findings</div>
+            <p>고어텐션 토큰 마스킹으로 surrogate OOD를 생성해 외부 OOD 데이터 없이도 경쟁력 있는 성능을 달성합니다.</p>
+            <div class="links">
+              <a href="https://scholar.google.com/scholar?q=Pseudo+Outlier+Exposure+for+Out-of-Distribution+Detection+without+External+Data" target="_blank" rel="noopener noreferrer">Scholar link</a>
+            </div>
+          </article>
+
+          <article class="item">
+            <h3>CABIN — Controlling Augmentations for Balancing Invariance and Diversification in One-Shot Image Classification</h3>
+            <div class="meta">Under Review</div>
+            <p>Diversity-focused / key-feature-focused 합성과 2-stage 학습으로 강건성과 충실도 균형을 맞춥니다.</p>
+            <div class="links">
+              <a href="https://scholar.google.com/scholar?q=Controlling+Augmentations+for+Balancing+Invariance+and+Diversification+in+One-Shot+Image+Classification" target="_blank" rel="noopener noreferrer">Scholar link</a>
+            </div>
+          </article>
+
+          <article class="item">
+            <h3>Ko-ToxicWebQ — A Korean Toxic Web Query Dataset</h3>
+            <div class="meta">Under Review</div>
+            <p>47.7K 한국어 질의와 독성/난독화 라벨을 제공하여 한국어 AI 안전성 벤치마크를 확장합니다.</p>
+            <div class="links">
+              <a href="https://scholar.google.com/scholar?q=Ko-ToxicWebQ+A+Korean+Toxic+Web+Query+Dataset" target="_blank" rel="noopener noreferrer">Scholar link</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <h2>Applied Projects</h2>
+        <div class="item-list">
+          <article class="item">
+            <h3>FireFusion (Patent)</h3>
+            <p>LoRA, ControlNet, BLIP+GPT recaptioning을 활용한 화재 이미지 합성 및 탐지 성능 향상.</p>
+          </article>
+          <article class="item">
+            <h3>Patent Domain NMT</h3>
+            <p>mBART 기반 도메인 적응 및 역번역으로 특허 번역 품질 개선.</p>
+          </article>
+          <article class="item">
+            <h3>SYnet</h3>
+            <p>조선소 정비 차량 수요 예측을 위한 4D CNN 기반 시공간 모델링.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        © 2026 Jung Kyu Heon · Portfolio
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
